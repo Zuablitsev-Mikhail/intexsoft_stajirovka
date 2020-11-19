@@ -1,0 +1,19 @@
+{
+    "name": "intexsoft/part_1",
+    "description": "part_1",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zuablitsev-Mikhail",
+            "email": "mzyablitsev2@mail.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "liw\\": ""
+        }
+    }
+}
