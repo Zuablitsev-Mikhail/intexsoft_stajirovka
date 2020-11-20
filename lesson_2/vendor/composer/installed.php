@@ -6,19 +6,19 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e117e97f12697faf02eded13d7e59ef544a23060',
-    'name' => 'intexsoft/part_1',
+    'reference' => '6f55b6e3b421fa07ee52aaf19f98d59fcc3e9e38',
+    'name' => 'intexsoft/lesson_2',
   ),
   'versions' => 
   array (
-    'intexsoft/part_1' => 
+    'intexsoft/lesson_2' => 
     array (
       'pretty_version' => 'dev-master',
       'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => 'e117e97f12697faf02eded13d7e59ef544a23060',
+      'reference' => '6f55b6e3b421fa07ee52aaf19f98d59fcc3e9e38',
     ),
   ),
 );

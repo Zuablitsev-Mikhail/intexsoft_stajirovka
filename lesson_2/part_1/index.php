@@ -1,5 +1,5 @@
 <?php
-    require 'vendor/autoload.php';
+    require '../vendor/autoload.php';
 
 //    пример объявления двух экземпляров разных классов
     $engine = new \liw\app\Engine("1",1,1);

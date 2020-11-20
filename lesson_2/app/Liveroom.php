@@ -4,7 +4,7 @@
 namespace liw\app;
 
 
-class Room
+class Liveroom
 {
     public $CountBeds;
     public $Number;
