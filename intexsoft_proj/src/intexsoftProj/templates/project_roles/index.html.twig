@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProjectRoles index{% endblock %}
+
+{% block body %}
+    <h1>ProjectRoles index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>еtitle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project_role in project_roles %}
+            <tr>
+                <td>{{ project_role.id }}</td>
+                <td>{{ project_role.еtitle }}</td>
+                <td>
+                    <a href="{{ path('project_roles_show', {'id': project_role.id}) }}">show</a>
+                    <a href="{{ path('project_roles_edit', {'id': project_role.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('project_roles_new') }}">Create new</a>
+{% endblock %}

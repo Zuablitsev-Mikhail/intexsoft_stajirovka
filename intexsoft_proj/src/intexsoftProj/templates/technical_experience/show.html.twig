@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TechnicalExperience{% endblock %}
+
+{% block body %}
+    <h1>TechnicalExperience</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ technical_experience.id }}</td>
+            </tr>
+            <tr>
+                <th>Category_id</th>
+                <td>{{ technical_experience.categoryId }}</td>
+            </tr>
+            <tr>
+                <th>Skill_id</th>
+                <td>{{ technical_experience.skillId }}</td>
+            </tr>
+            <tr>
+                <th>ExperienceTerm</th>
+                <td>{{ technical_experience.experienceTerm }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ technical_experience.level }}</td>
+            </tr>
+            <tr>
+                <th>LastYearUsed</th>
+                <td>{{ technical_experience.lastYearUsed }}</td>
+            </tr>
+            <tr>
+                <th>DateOfCreate</th>
+                <td>{{ technical_experience.dateOfCreate ? technical_experience.dateOfCreate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateOfUpdate</th>
+                <td>{{ technical_experience.dateOfUpdate ? technical_experience.dateOfUpdate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>User_id</th>
+                <td>{{ technical_experience.userId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('technical_experience_index') }}">back to list</a>
+
+    <a href="{{ path('technical_experience_edit', {'id': technical_experience.id}) }}">edit</a>
+
+    {{ include('technical_experience/_delete_form.html.twig') }}
+{% endblock %}

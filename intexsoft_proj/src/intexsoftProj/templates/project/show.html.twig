@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project{% endblock %}
+
+{% block body %}
+    <h1>Project</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ project.id }}</td>
+            </tr>
+            <tr>
+                <th>User_id</th>
+                <td>{{ project.userId }}</td>
+            </tr>
+            <tr>
+                <th>Internal_title</th>
+                <td>{{ project.internalTitle }}</td>
+            </tr>
+            <tr>
+                <th>External_title</th>
+                <td>{{ project.externalTitle }}</td>
+            </tr>
+            <tr>
+                <th>Period_start</th>
+                <td>{{ project.periodStart ? project.periodStart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Period_end</th>
+                <td>{{ project.periodEnd ? project.periodEnd|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Role_id</th>
+                <td>{{ project.roleId }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ project.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('project_index') }}">back to list</a>
+
+    <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
+
+    {{ include('project/_delete_form.html.twig') }}
+{% endblock %}
