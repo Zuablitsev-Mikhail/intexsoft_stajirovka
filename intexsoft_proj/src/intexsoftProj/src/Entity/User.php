@@ -14,6 +14,11 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity="src\Entity\PersonalData")
+     * @ORM\OneToMany(targetEntity=SpokenLanguages::class, mappedBy="user_id")
+     * @ORM\OneToMany(targetEntity=CareerSummary::class, mappedBy="user_id")
+     * @ORM\OneToMany(targetEntity=TechnicalExperience::class, mappedBy="user_id")
+     * @ORM\OneToMany(targetEntity=Skills::class, mappedBy="user_id")
      */
     private $id;
 

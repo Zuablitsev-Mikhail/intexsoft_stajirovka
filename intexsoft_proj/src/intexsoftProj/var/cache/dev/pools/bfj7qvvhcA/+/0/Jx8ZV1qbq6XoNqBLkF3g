@@ -5,6 +5,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
         clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
         clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
     ],
     null,
     [
@@ -12,12 +13,19 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'type' => [
                 2 => 'integer',
             ],
+            'targetEntity' => [
+                3 => 'App\\Entity\\Categories',
+            ],
+            'inversedBy' => [
+                3 => 'skill_id',
+            ],
         ],
     ],
     [
         $o[0],
         $o[1],
         $o[2],
+        $o[3],
     ],
     []
 ); }];

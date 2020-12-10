@@ -23,7 +23,7 @@ class Education
     private $dateStart;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateEnd;
 

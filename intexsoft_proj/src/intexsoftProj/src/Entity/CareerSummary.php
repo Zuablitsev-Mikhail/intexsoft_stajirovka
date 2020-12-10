@@ -38,7 +38,7 @@ class CareerSummary
     private $jobDescription;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="id")
      */
     private $user_id;
 

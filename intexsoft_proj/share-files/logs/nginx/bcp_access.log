@@ -96,3 +96,5 @@
 172.22.0.1 - - [10/Dec/2020:01:56:35 +0000] "GET /career/summary/ HTTP/2.0" 200 10357 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:83.0) Gecko/20100101 Firefox/83.0"
 172.22.0.1 - - [10/Dec/2020:01:56:37 +0000] "GET /favicon.ico HTTP/2.0" 499 0 "https://php.intexsoft.by/career/summary/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:83.0) Gecko/20100101 Firefox/83.0"
 172.22.0.1 - - [10/Dec/2020:01:56:37 +0000] "GET /_wdt/7760ce HTTP/2.0" 200 3927 "https://php.intexsoft.by/career/summary/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:83.0) Gecko/20100101 Firefox/83.0"
+172.22.0.1 - - [10/Dec/2020:02:12:41 +0000] "GET /career/summary/ HTTP/2.0" 200 10359 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:83.0) Gecko/20100101 Firefox/83.0"
+172.22.0.1 - - [10/Dec/2020:02:12:42 +0000] "GET /_wdt/3460f4 HTTP/2.0" 200 3584 "https://php.intexsoft.by/career/summary/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:83.0) Gecko/20100101 Firefox/83.0"

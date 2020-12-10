@@ -43,7 +43,7 @@ class PersonalData
     private $about;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=User::class)
      */
     private $user_id;
 

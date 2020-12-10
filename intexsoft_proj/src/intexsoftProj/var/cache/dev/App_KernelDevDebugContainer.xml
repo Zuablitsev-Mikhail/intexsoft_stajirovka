@@ -403,6 +403,13 @@
         <argument type="service" id=".service_locator.5nX7ca3.App\Controller\TechnicalExperienceController"/>
       </call>
     </service>
+    <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.5nX7ca3.App\Controller\UserController"/>
+      </call>
+    </service>
     <service id="App\Form\CareerSummaryType" class="App\Form\CareerSummaryType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -431,6 +438,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\TechnicalExperienceType" class="App\Form\TechnicalExperienceType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\CareerSummaryRepository" class="App\Repository\CareerSummaryRepository" autowire="true" autoconfigure="true">
@@ -954,6 +964,7 @@
         <argument>App\Form\SkillsType</argument>
         <argument>App\Form\SpokenLanguagesType</argument>
         <argument>App\Form\TechnicalExperienceType</argument>
+        <argument>App\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1311,7 +1322,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.VxkMfiK"/>
+      <argument type="service" id=".service_locator.UofqNHG"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -5208,6 +5219,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TechnicalExperienceController" class="App\Controller\TechnicalExperienceController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TechnicalExperienceController" class="App\Controller\TechnicalExperienceController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TechnicalExperienceController" class="App\Controller\TechnicalExperienceController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CareerSummaryType" class="App\Form\CareerSummaryType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CareerSummaryType" class="App\Form\CareerSummaryType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CategoriesType" class="App\Form\CategoriesType" autowire="true" abstract="true"/>
@@ -5228,6 +5242,8 @@
     <service id=".abstract.instanceof.App\Form\SpokenLanguagesType" class="App\Form\SpokenLanguagesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TechnicalExperienceType" class="App\Form\TechnicalExperienceType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\TechnicalExperienceType" class="App\Form\TechnicalExperienceType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CareerSummaryRepository" class="App\Repository\CareerSummaryRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CareerSummaryRepository" class="App\Repository\CareerSummaryRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" abstract="true"/>
@@ -5623,7 +5639,19 @@
         <argument key="technicalExperience" type="service" id=".errored..service_locator.PS_L3Df.App\Entity\TechnicalExperience"/>
       </argument>
     </service>
-    <service id=".service_locator.FXgnNRF" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator..Ae5NXw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="userRepository" type="service" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ch4Jgvl" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="user" type="service" id=".errored..service_locator.ch4Jgvl.App\Entity\User"/>
+      </argument>
+    </service>
+    <service id=".service_locator.tgCfmNo" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CareerSummaryController::delete" type="service" id=".service_locator.tWBFQtG"/>
@@ -5666,6 +5694,10 @@
         <argument key="App\Controller\TechnicalExperienceController::edit" type="service" id=".service_locator.PS_L3Df"/>
         <argument key="App\Controller\TechnicalExperienceController::index" type="service" id=".service_locator.AXu1g1v"/>
         <argument key="App\Controller\TechnicalExperienceController::show" type="service" id=".service_locator.PS_L3Df"/>
+        <argument key="App\Controller\UserController::delete" type="service" id=".service_locator.ch4Jgvl"/>
+        <argument key="App\Controller\UserController::edit" type="service" id=".service_locator.ch4Jgvl"/>
+        <argument key="App\Controller\UserController::index" type="service" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\UserController::show" type="service" id=".service_locator.ch4Jgvl"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::terminate" type="service" id=".service_locator.KfwZsne"/>
@@ -5712,6 +5744,10 @@
         <argument key="App\Controller\TechnicalExperienceController:edit" type="service" id=".service_locator.PS_L3Df"/>
         <argument key="App\Controller\TechnicalExperienceController:index" type="service" id=".service_locator.AXu1g1v"/>
         <argument key="App\Controller\TechnicalExperienceController:show" type="service" id=".service_locator.PS_L3Df"/>
+        <argument key="App\Controller\UserController:delete" type="service" id=".service_locator.ch4Jgvl"/>
+        <argument key="App\Controller\UserController:edit" type="service" id=".service_locator.ch4Jgvl"/>
+        <argument key="App\Controller\UserController:index" type="service" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\UserController:show" type="service" id=".service_locator.ch4Jgvl"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:terminate" type="service" id=".service_locator.KfwZsne"/>
@@ -5776,7 +5812,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.VxkMfiK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.UofqNHG" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CareerSummaryType" type="service" id="App\Form\CareerSummaryType"/>
@@ -5789,6 +5825,7 @@
         <argument key="App\Form\SkillsType" type="service" id="App\Form\SkillsType"/>
         <argument key="App\Form\SpokenLanguagesType" type="service" id="App\Form\SpokenLanguagesType"/>
         <argument key="App\Form\TechnicalExperienceType" type="service" id="App\Form\TechnicalExperienceType"/>
+        <argument key="App\Form\UserType" type="service" id="App\Form\UserType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service" id="form.type.color"/>
@@ -6090,6 +6127,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.5nX7ca3" method="withContext"/>
     </service>
+    <service id=".service_locator.5nX7ca3.App\Controller\UserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\UserController"/>
+      <argument>App\Controller\UserController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.5nX7ca3" method="withContext"/>
+    </service>
     <service id=".service_locator.J4b.DPX" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6252,12 +6295,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.FXgnNRF"/>
+      <argument type="service" id=".service_locator.tgCfmNo"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.FXgnNRF"/>
+      <argument type="service" id=".service_locator.tgCfmNo"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface">
       <argument type="collection"/>
@@ -6279,6 +6322,7 @@
     <service id=".errored..service_locator.4GXXyqo.App\Entity\Skills" class="App\Entity\Skills"/>
     <service id=".errored..service_locator.6EItiid.App\Entity\SpokenLanguages" class="App\Entity\SpokenLanguages"/>
     <service id=".errored..service_locator.PS_L3Df.App\Entity\TechnicalExperience" class="App\Entity\TechnicalExperience"/>
+    <service id=".errored..service_locator.ch4Jgvl.App\Entity\User" class="App\Entity\User"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
       <argument type="service" id=".service_locator.eXzwb0x"/>
@@ -6675,7 +6719,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.Kbr2i2X" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.FXgnNRF"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.tgCfmNo"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

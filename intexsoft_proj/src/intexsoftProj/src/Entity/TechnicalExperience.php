@@ -18,12 +18,12 @@ class TechnicalExperience
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="id")
      */
     private $category_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Skills::class, inversedBy="id")
      */
     private $skill_id;
 
@@ -53,7 +53,7 @@ class TechnicalExperience
     private $dateOfUpdate;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="id")
      */
     private $user_id;
 
@@ -88,12 +88,12 @@ class TechnicalExperience
 
     public function getExperienceTerm(): ?int
     {
-        return $this->experienceЕ�Term;
+        return $this->experienceTerm;
     }
 
     public function setExperienceTerm(int $experienceTerm): self
     {
-        $this->experienceЕ�Term = $experienceTerm;
+        $this->experienceTerm = $experienceTerm;
 
         return $this;
     }

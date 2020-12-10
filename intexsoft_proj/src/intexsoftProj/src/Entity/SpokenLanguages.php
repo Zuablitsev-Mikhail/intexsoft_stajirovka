@@ -18,12 +18,12 @@ class SpokenLanguages
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="id")
      */
     private $user_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=Languages::class)
      */
     private $language_id;
 

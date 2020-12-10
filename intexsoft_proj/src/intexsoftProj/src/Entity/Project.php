@@ -45,11 +45,6 @@ class Project
     private $period_end;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $role_id;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Skills::class, inversedBy="projects")
      */
     private $technologies;
@@ -58,6 +53,11 @@ class Project
      * @ORM\Column(type="string", length=255)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ProjectRoles::class, inversedBy="projects")
+     */
+    private $role_id;
 
     public function __construct()
     {
@@ -129,18 +129,6 @@ class Project
         return $this;
     }
 
-    public function getRoleId(): ?int
-    {
-        return $this->role_id;
-    }
-
-    public function setRoleId(int $role_id): self
-    {
-        $this->role_id = $role_id;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Skills[]
      */
@@ -173,6 +161,18 @@ class Project
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getRoleId(): ?ProjectRoles
+    {
+        return $this->role_id;
+    }
+
+    public function setRoleId(?ProjectRoles $role_id): self
+    {
+        $this->role_id = $role_id;
 
         return $this;
     }

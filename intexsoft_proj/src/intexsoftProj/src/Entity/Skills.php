@@ -16,16 +16,17 @@ class Skills
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="skill_id")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="id")
      */
     private $user_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="skill_id")
      */
     private $category_id;
 
@@ -35,9 +36,14 @@ class Skills
     private $title;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="technologies")
+     * @ORM\ManyToMany(targetEntity=Project::class, inversedBy="technologies")
      */
     private $projects;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="skills_id")
+     */
+    private $categories;
 
     public function __construct()
     {
@@ -108,6 +114,18 @@ class Skills
         if ($this->projects->removeElement($project)) {
             $project->removeTechnology($this);
         }
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }
