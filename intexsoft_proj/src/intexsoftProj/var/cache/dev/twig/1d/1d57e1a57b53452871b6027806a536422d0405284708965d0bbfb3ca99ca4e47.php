@@ -48,23 +48,27 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
 <html>
     <head>
         <meta charset=\"UTF-8\">
+        <meta name=\"viewport\"
+              content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">
+        <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
         <title>";
-        // line 5
+        // line 8
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
+        <link rel=\"shortcut icon\" href=\"../img/icon.svg\" type=\"image/x-icon\">
         ";
-        // line 6
+        // line 10
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 7
+        // line 11
         echo "    </head>
     <body>
         ";
-        // line 9
+        // line 13
         $this->displayBlock('body', $context, $blocks);
-        // line 10
+        // line 14
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 11
+        // line 15
         echo "    </body>
 </html>
 ";
@@ -76,7 +80,7 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
 
     }
 
-    // line 5
+    // line 8
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -95,7 +99,7 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
 
     }
 
-    // line 6
+    // line 10
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -105,6 +109,7 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
+        echo "<link rel=\"stylesheet\" href=\"../main/css/css.css\">";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -113,7 +118,7 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
 
     }
 
-    // line 9
+    // line 13
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -131,7 +136,7 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
 
     }
 
-    // line 10
+    // line 14
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -156,7 +161,7 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
 
     public function getDebugInfo()
     {
-        return array (  135 => 10,  117 => 9,  99 => 6,  80 => 5,  68 => 11,  65 => 10,  63 => 9,  59 => 7,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  140 => 14,  122 => 13,  103 => 10,  84 => 8,  72 => 15,  69 => 14,  67 => 13,  63 => 11,  61 => 10,  56 => 8,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -165,8 +170,12 @@ class __TwigTemplate_654033f97bee63545cb4e48a7e0d859e2f106fd4b4cb070e1c38c503c2b
 <html>
     <head>
         <meta charset=\"UTF-8\">
+        <meta name=\"viewport\"
+              content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">
+        <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <link rel=\"shortcut icon\" href=\"../img/icon.svg\" type=\"image/x-icon\">
+        {% block stylesheets %}<link rel=\"stylesheet\" href=\"../main/css/css.css\">{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
