@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -93,5 +94,8 @@ class User
         $this->dateOfUpdate = $dateOfUpdate;
 
         return $this;
+    }
+    public  function  __toString ( )  {
+        return (string) $this -> id;
     }
 }
