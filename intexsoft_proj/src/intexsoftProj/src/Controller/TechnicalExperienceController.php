@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/technical/experience")
+ * @Route("/technicalexperience")
  */
 class TechnicalExperienceController extends AbstractController
 {

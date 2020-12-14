@@ -35,4 +35,9 @@ class Kernel extends BaseKernel
             (require $path)($routes->withPath($path), $this);
         }
     }
+    public function boot()
+    {
+        parent::boot();
+        date_default_timezone_set("Europe/Madrid");
+    }
 }

@@ -10,8 +10,13 @@
             <div class="header-box flex">
                 <p><a href="#">О нас</a></p>
                 <p><a href="#">Контакты</a></p>
-                <p><a href="#">Регистрация</a></p>
-                <p><a href="#">Вход</a></p>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <p><a href="{{ path('app_logout') }}">Выход</a></p>
+                {% else %}
+                    <p><a href="{{ path('app_login') }}">Вход</a></p>
+                    <p><a href="{{ path('app_register') }}">Регистрация</a></p>
+                {% endif %}
+{#                {% endblock %}#}
             </div>
             <div class="hamburger">
                 <a href="#"><span></span></a>

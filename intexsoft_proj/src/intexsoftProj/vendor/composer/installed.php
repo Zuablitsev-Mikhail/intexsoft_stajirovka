@@ -65,6 +65,15 @@
       ),
       'reference' => '9f3e3f3cc5399604c0325d5ffa92609d694d950d',
     ),
+    'doctrine/data-fixtures' => 
+    array (
+      'pretty_version' => '1.4.4',
+      'version' => '1.4.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '16a03fadb5473f49aad70384002dfd5012fe680e',
+    ),
     'doctrine/dbal' => 
     array (
       'pretty_version' => '2.12.1',
@@ -82,6 +91,15 @@
       array (
       ),
       'reference' => '044d33eeffdb236d5013b6b4af99f87519e10751',
+    ),
+    'doctrine/doctrine-fixtures-bundle' => 
+    array (
+      'pretty_version' => '3.4.0',
+      'version' => '3.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '870189619a7770f468ffb0b80925302e065a3b34',
     ),
     'doctrine/doctrine-migrations-bundle' => 
     array (
@@ -351,6 +369,15 @@
       array (
       ),
       'reference' => '430d14c01836b77c28092883d195a43ce413ee32',
+    ),
+    'symfony/amazon-mailer' => 
+    array (
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1e7ac9aaeefb4c2d55e21e73235201f7673dc0b5',
     ),
     'symfony/asset' => 
     array (
@@ -992,6 +1019,15 @@
       array (
       ),
       'reference' => 'bb73619b2ae5121bbbcd9f191dfd53ded17ae598',
+    ),
+    'symfonycasts/verify-email-bundle' => 
+    array (
+      'pretty_version' => 'v1.1.0',
+      'version' => '1.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'be051ebed83c97a6737e5b71aeafe7c482375a95',
     ),
     'twig/extra-bundle' => 
     array (

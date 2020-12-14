@@ -4,13 +4,18 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User
+class User implements UserInterface
 {
+    public const ROLE_USER = 0;
+    public const ROLE_SELLER = 1;
+    public const ROLE_HR = 2;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,24 +29,30 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $dateOfCreate;
+    private $DateOfCreate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $dateOfUpdate;
+    private $DateOfUpdate;
 
     public function getId(): ?int
     {
@@ -60,9 +71,42 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->password;
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        if($this->roles[0] == self::ROLE_USER) $roles[] = 'ROLE_USER';
+        if($this->roles[0] == self::ROLE_SELLER) $roles[] = 'ROLE_SELLER';
+        if($this->roles[0] == self::ROLE_HR) $roles[] = 'ROLE_HR';
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -72,30 +116,43 @@ class User
         return $this;
     }
 
-    public function getDateOfCreate(): ?\DateTimeInterface
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
     {
-        return $this->dateOfCreate;
+        // not needed when using the "bcrypt" algorithm in security.yaml
     }
 
-    public function setDateOfCreate(\DateTimeInterface $dateOfCreate): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->dateOfCreate = $dateOfCreate;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getDateOfCreate(): ?\DateTimeInterface
+    {
+        return $this->DateOfCreate;
+    }
+
+    public function setDateOfCreate(?\DateTimeInterface $DateOfCreate): self
+    {
+        $this->DateOfCreate = $DateOfCreate;
 
         return $this;
     }
 
     public function getDateOfUpdate(): ?\DateTimeInterface
     {
-        return $this->dateOfUpdate;
+        return $this->DateOfUpdate;
     }
 
-    public function setDateOfUpdate(\DateTimeInterface $dateOfUpdate): self
+    public function setDateOfUpdate(?\DateTimeInterface $DateOfUpdate): self
     {
-        $this->dateOfUpdate = $dateOfUpdate;
-
+        $this->DateOfUpdate = $DateOfUpdate;
         return $this;
-    }
-    public  function  __toString ( )  {
-        return (string) $this -> id;
     }
 }

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/spoken/languages")
+ * @Route("/spokenlanguages")
  */
 class SpokenLanguagesController extends AbstractController
 {

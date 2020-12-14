@@ -70,7 +70,7 @@ class TelegramBotHandler extends AbstractProcessingHandler
     private $disableWebPagePreview;
 
     /**
-     * Sends the message silently. Users will receive a notification with no sound.
+     * Sends the message silently. User will receive a notification with no sound.
      * @var bool|null
      */
     private $disableNotification;

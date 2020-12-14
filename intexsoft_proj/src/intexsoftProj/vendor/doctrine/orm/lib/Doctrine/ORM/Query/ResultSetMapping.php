@@ -27,7 +27,7 @@ namespace Doctrine\ORM\Query;
  * reduce the size of serialized instances for more effective caching due to better (un-)serialization
  * performance.
  *
- * <b>Users should use the public methods.</b>
+ * <b>User should use the public methods.</b>
  *
  * @author Roman Borschel <roman@code-factory.org>
  * @since 2.0
