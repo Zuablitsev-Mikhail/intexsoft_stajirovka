@@ -53,7 +53,7 @@ class Education
     private $dateOfUpdate;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
     private $user_id;
 

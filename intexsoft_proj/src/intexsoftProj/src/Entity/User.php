@@ -21,6 +21,7 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @ORM\OneToOne(targetEntity="src\Entity\PersonalData")
+     * @ORM\OneToOne(targetEntity="src\Entity\Education")
      * @ORM\OneToMany(targetEntity=SpokenLanguages::class, mappedBy="user_id")
      * @ORM\OneToMany(targetEntity=CareerSummary::class, mappedBy="user_id")
      * @ORM\OneToMany(targetEntity=TechnicalExperience::class, mappedBy="user_id")
@@ -45,14 +46,14 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $DateOfCreate;
+    private $ip;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $DateOfUpdate;
+    private $lastLogin;
 
     public function getId(): ?int
     {
@@ -88,9 +89,9 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        if($this->roles[0] == self::ROLE_USER) $roles[] = 'ROLE_USER';
-        if($this->roles[0] == self::ROLE_SELLER) $roles[] = 'ROLE_SELLER';
-        if($this->roles[0] == self::ROLE_HR) $roles[] = 'ROLE_HR';
+        if($this->roles[0] == self::ROLE_USER) $roles[0] = 'ROLE_USER';
+        if($this->roles[0] == self::ROLE_SELLER) $roles[0] = 'ROLE_SELLER';
+        if($this->roles[0] == self::ROLE_HR) $roles[0] = 'ROLE_HR';
         return array_unique($roles);
     }
 
@@ -133,26 +134,27 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getDateOfCreate(): ?\DateTimeInterface
+    public function getIp(): ?string
     {
-        return $this->DateOfCreate;
+        return $this->ip;
     }
 
-    public function setDateOfCreate(?\DateTimeInterface $DateOfCreate): self
+    public function setIp(string $ip): self
     {
-        $this->DateOfCreate = $DateOfCreate;
+        $this->ip = $ip;
 
         return $this;
     }
 
-    public function getDateOfUpdate(): ?\DateTimeInterface
+    public function getLastLogin(): ?\DateTimeInterface
     {
-        return $this->DateOfUpdate;
+        return $this->lastLogin;
     }
 
-    public function setDateOfUpdate(?\DateTimeInterface $DateOfUpdate): self
+    public function setLastLogin(\DateTimeInterface $lastLogin): self
     {
-        $this->DateOfUpdate = $DateOfUpdate;
+        $this->lastLogin = $lastLogin;
+
         return $this;
     }
 }
