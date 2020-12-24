@@ -2,6 +2,7 @@
     --primary_color: #45454a;
     --secondary_color: #7c7c85;
 }
+
 @media only screen and (min-width: 1200px){
     .img-block .block-2{
         transform: scale(1.2);

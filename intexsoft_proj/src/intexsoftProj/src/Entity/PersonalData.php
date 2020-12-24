@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PersonalDataRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Type;
 
 /**
  * @ORM\Entity(repositoryClass=PersonalDataRepository::class)
@@ -112,7 +113,7 @@ class PersonalData
         return $this;
     }
 
-    public function getUserId(): ?User
+    public function getUserId(): ?user
     {
         return $this->user_id;
     }
@@ -122,5 +123,13 @@ class PersonalData
         $this->user_id = $user_id;
 
         return $this;
+    }
+    public function getUserEmail(): ?string
+    {
+        return $this->user_id->getEmail();
+    }
+    public function getUserRoles(): ?string
+    {
+        return $this->user_id->getRoles()[0];
     }
 }

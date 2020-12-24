@@ -11,8 +11,6 @@
                 <th>Id</th>
                 <th>Email</th>
                 <th>Password</th>
-                <th>DateOfCreate</th>
-                <th>DateOfUpdate</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,8 +20,6 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.password }}</td>
-                <td>{{ user.dateOfCreate ? user.dateOfCreate|date('Y-m-d') : '' }}</td>
-                <td>{{ user.dateOfUpdate ? user.dateOfUpdate|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>

@@ -21,6 +21,7 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @ORM\OneToOne(targetEntity="src\Entity\PersonalData")
+     * @ORM\OneToOne(targetEntity="src\Entity\Project")
      * @ORM\OneToOne(targetEntity="src\Entity\Education")
      * @ORM\OneToMany(targetEntity=SpokenLanguages::class, mappedBy="user_id")
      * @ORM\OneToMany(targetEntity=CareerSummary::class, mappedBy="user_id")

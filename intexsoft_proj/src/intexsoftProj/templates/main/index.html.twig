@@ -1,7 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'main.html.twig' %}
 
 {% block title %}Main{% endblock %}
-{% block stylesheets %}<link rel="stylesheet" href="/css/css.css">{% endblock %}
 
 {% block body %}
     <header class="flex">
@@ -14,7 +13,6 @@
                     <p><a href="{{ path('app_logout') }}">Выход</a></p>
                 {% else %}
                     <p><a href="{{ path('app_login') }}">Вход</a></p>
-                    <p><a href="{{ path('app_register') }}">Регистрация</a></p>
                 {% endif %}
 {#                {% endblock %}#}
             </div>
@@ -86,17 +84,4 @@
             </div>
         </section>
     </main>
-    <footer class="wrapper flex">
-        <div class="flex footer-nav">
-            <p><a href="#">О нас</a></p>
-            <p><a href="#">Контакты</a></p>
-            <p><a href="#">Информация</a></p>
-        </div>
-        <div class="flex footer-links">
-            <a href="#"><img src="/img/vk.ico" alt=""></a>
-            <a href="#"><img src="/img/inst.ico" alt=""></a>
-            <a href="#"><img src="/img/twitter.ico" alt=""></a>
-        </div>
-        <h5>Ⓒ ООО Imedia</h5>
-    </footer>
 {% endblock %}
