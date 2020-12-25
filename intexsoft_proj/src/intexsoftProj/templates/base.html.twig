@@ -10,10 +10,26 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="/css/css.css">
             <link rel="stylesheet" href="/css/font-include.css">
+            <link rel="stylesheet" href="/css/footer-style.css">
         {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+        {% block footer %}
+            <footer class="wrapper flex">
+                <div class="flex footer-nav">
+                    <p><a href="#">О нас</a></p>
+                    <p><a href="#">Контакты</a></p>
+                    <p><a href="#">Информация</a></p>
+                </div>
+                <div class="flex footer-links">
+                    <a href="#"><img src="/img/vk.ico" alt=""></a>
+                    <a href="#"><img src="/img/inst.ico" alt=""></a>
+                    <a href="#"><img src="/img/twitter.ico" alt=""></a>
+                </div>
+                <h5>Ⓒ ООО Imedia</h5>
+            </footer>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

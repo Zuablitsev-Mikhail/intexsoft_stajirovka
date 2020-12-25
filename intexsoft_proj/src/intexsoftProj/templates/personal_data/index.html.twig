@@ -14,7 +14,6 @@
                 <th>Gender</th>
                 <th>Phone</th>
                 <th>About</th>
-                <th>User_id</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,7 +26,6 @@
                 <td>{{ personal_datum.Gender }}</td>
                 <td>{{ personal_datum.phone }}</td>
                 <td>{{ personal_datum.about }}</td>
-                <td>{{ personal_datum.userId }}</td>
                 <td>
                     <a href="{{ path('personal_data_show', {'id': personal_datum.id}) }}">show</a>
                     <a href="{{ path('personal_data_edit', {'id': personal_datum.id}) }}">edit</a>

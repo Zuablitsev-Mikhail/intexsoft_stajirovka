@@ -1,5 +1,6 @@
 version: '3.6'
 services:
+
   app:
     build: docker/nginx
     ports:
@@ -39,7 +40,7 @@ services:
       - 3305:3306
     volumes:
       - ./share-files/backup:/tmp/db
-      - ./share-files/database:/var/lib/mysql
+      - ./share-files/db:/var/lib/mysql
     env_file: docker/mysql/config/mysql.env
     networks:
       - wp-network

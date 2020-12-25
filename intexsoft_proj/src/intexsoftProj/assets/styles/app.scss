@@ -5,8 +5,20 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: column;
+  width: 100%;
 }
-
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+}
+a{
+  text-decoration: none;
+}
 form{
   display: flex;
   flex-direction: column;

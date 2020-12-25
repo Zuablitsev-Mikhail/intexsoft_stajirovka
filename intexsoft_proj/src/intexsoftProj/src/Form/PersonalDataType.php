@@ -17,7 +17,6 @@ class PersonalDataType extends AbstractType
             ->add('Gender')
             ->add('phone')
             ->add('about')
-            ->add('user_id')
         ;
     }
 
