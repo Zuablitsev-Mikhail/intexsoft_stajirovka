@@ -139,7 +139,9 @@ class User implements UserInterface
     {
         return $this->ip;
     }
-
+    public function setIpValue(){
+        $this->ip = $_SERVER['REMOTE_ADDR'];
+    }
     public function setIp(string $ip): self
     {
         $this->ip = $ip;
@@ -152,10 +154,16 @@ class User implements UserInterface
         return $this->lastLogin;
     }
 
+    public function setLastLoginValue()
+    {
+        $this->lastLogin = new \DateTime();
+    }
     public function setLastLogin(\DateTimeInterface $lastLogin): self
     {
         $this->lastLogin = $lastLogin;
-
         return $this;
+    }
+    public function __toString(){
+        return $this->id;
     }
 }

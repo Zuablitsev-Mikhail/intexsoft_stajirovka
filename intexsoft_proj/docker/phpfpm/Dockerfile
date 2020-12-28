@@ -66,6 +66,9 @@ RUN composer require symfony/maker-bundle --dev
 
 RUN sed -i -e 's/^;zend_extension/\zend_extension/g' /etc/php7/conf.d/xdebug.ini
 
+#Строчка, если не загружается проект в браузере. Исправляет ошибку 'standard_init_linux.go:211: exec user process caused "no such file or directory"'
+RUN chmod +x docker-entrypoint.sh
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["php-fpm7", "-F"]

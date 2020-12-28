@@ -40,7 +40,8 @@ services:
       - 3305:3306
     volumes:
       - ./share-files/backup:/tmp/db
-      - ./share-files/db:/var/lib/mysql
+#      - ./share-files/db:/var/lib/mysql
+      - ./share-files/database:/var/lib/mysql
     env_file: docker/mysql/config/mysql.env
     networks:
       - wp-network
