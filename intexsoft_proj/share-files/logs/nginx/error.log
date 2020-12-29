@@ -2,3 +2,4 @@
 2020/12/26 08:16:25 [emerg] 1#1: host not found in upstream "phpfpm:9001" in /etc/nginx/conf.d/upstream.conf:1
 2020/12/26 08:17:50 [emerg] 1#1: host not found in upstream "phpfpm:9001" in /etc/nginx/conf.d/upstream.conf:1
 2020/12/28 06:36:47 [emerg] 1#1: host not found in upstream "phpfpm:9001" in /etc/nginx/conf.d/upstream.conf:1
+2020/12/28 11:45:19 [emerg] 1#1: a duplicate listen 0.0.0.0:443 in /etc/nginx/conf.d/bcp.conf:3

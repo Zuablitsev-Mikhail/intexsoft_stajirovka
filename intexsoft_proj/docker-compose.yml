@@ -10,7 +10,7 @@ services:
     volumes:
 #      - ./src:/var/www/html
       - ./src/intexsoftProj:/var/www/html
-      - ./media:/var/www/html/uploads/media
+#      - ./media:/var/www/html/uploads/media
       #      - ./src:/var/www/html:rw,cached
       #      - ./share-files/composer:/var/www/html/var/composer_home
       - ./share-files/composer:/var/www/.composer

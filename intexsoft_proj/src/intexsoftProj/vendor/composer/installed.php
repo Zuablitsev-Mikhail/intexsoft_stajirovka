@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
+    'pretty_version' => '1.0.0+no-version-set',
+    'version' => '1.0.0.0',
     'aliases' => 
     array (
     ),
-    'reference' => '62c722f40426199005608b5765b8bcab4c7c0a2f',
+    'reference' => NULL,
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
+      'pretty_version' => '1.0.0+no-version-set',
+      'version' => '1.0.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '62c722f40426199005608b5765b8bcab4c7c0a2f',
+      'reference' => NULL,
     ),
     'composer/package-versions-deprecated' => 
     array (
