@@ -32,6 +32,8 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setRoles((array)User::ROLE_USER);
+            $user->setIpValue();
+            $user->setLastLoginValue();
 //            $user->setDateOfCreate(new \DateTime());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

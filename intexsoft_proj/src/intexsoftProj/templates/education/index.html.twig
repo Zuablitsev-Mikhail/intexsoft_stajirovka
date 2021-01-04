@@ -14,8 +14,6 @@
                 <th>Title</th>
                 <th>Disciplines</th>
                 <th>Result</th>
-                <th>DateOfCreate</th>
-                <th>DateOfUpdate</th>
                 <th>User_id</th>
                 <th>actions</th>
             </tr>
@@ -29,9 +27,7 @@
                 <td>{{ education.title }}</td>
                 <td>{{ education.disciplines }}</td>
                 <td>{{ education.result }}</td>
-                <td>{{ education.dateOfCreate ? education.dateOfCreate|date('Y-m-d') : '' }}</td>
-                <td>{{ education.dateOfUpdate ? education.dateOfUpdate|date('Y-m-d') : '' }}</td>
-                <td>{{ education.userId }}</td>
+                <td><a href="{{ path('user_show', {'id': education.user})}}">{{ education.user}}</a></td>
                 <td>
                     <a href="{{ path('education_show', {'id': education.id}) }}">show</a>
                     <a href="{{ path('education_edit', {'id': education.id}) }}">edit</a>

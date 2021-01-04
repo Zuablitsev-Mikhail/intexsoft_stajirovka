@@ -55,7 +55,7 @@ class TechnicalExperience
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="id")
      */
-    private $user_id;
+    private $user;
 
     public function getId(): ?int
     {
@@ -151,9 +151,9 @@ class TechnicalExperience
         return $this->user_id;
     }
 
-    public function setUserId(int $user_id): self
+    public function setUserId(int $user): self
     {
-        $this->user_id = $user_id;
+        $this->user_id = $user;
 
         return $this;
     }

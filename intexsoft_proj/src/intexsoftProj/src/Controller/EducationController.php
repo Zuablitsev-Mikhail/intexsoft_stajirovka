@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Education;
+use App\Entity\User;
 use App\Form\EducationType;
 use App\Repository\EducationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/education")
+ * @Route("employee/education")
  */
 class EducationController extends AbstractController
 {
@@ -33,9 +34,10 @@ class EducationController extends AbstractController
         $education = new Education();
         $form = $this->createForm(EducationType::class, $education);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $date = new \DateTime();
+            $education->setDateOfCreate($date);
             $entityManager->persist($education);
             $entityManager->flush();
 

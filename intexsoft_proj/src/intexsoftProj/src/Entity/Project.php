@@ -22,7 +22,7 @@ class Project
     /**
      * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
-    private $user_id;
+    private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -74,9 +74,9 @@ class Project
         return $this->user_id;
     }
 
-    public function setUserId(int $user_id): self
+    public function setUserId(int $user): self
     {
-        $this->user_id = $user_id;
+        $this->user_id = $user;
 
         return $this;
     }

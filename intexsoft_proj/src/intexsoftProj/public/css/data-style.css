@@ -17,7 +17,7 @@ table td, table tr, th{
 td a:nth-child(1){
     color: #1b9448;
 }
-td a:nth-child(1)::after{
+td:last-child a:nth-child(1)::after{
     content: " | ";
 }
 td a:nth-child(2){

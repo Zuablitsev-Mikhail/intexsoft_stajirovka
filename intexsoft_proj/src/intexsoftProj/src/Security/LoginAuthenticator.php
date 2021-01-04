@@ -65,9 +65,15 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
 
+        $pass =  $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']])->getPassword();
+        $pass_check = password_verify($credentials['password'], $pass);
         if (!$user) {
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Email could not be found.');
+
+        }
+        if(!$pass_check){
+            throw new CustomUserMessageAuthenticationException('Incorrect password.');
         }
 
         return $user;
@@ -77,7 +83,16 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
     {
         // Check the user's password or other credentials and return true or false
         // If there are no credentials to check, you can just return true
-        if($credentials) return true;
+        if($credentials){
+            $user =  $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+            $user->setIpValue();
+//            $user->setIpValue();
+//            $user->setLastLoginValue();
+//            $entityManager = $user->getDoctrine()->getManager();
+//            $entityManager->persist($user);
+//            $entityManager->flush();
+            return true;
+        }
         else false;
     }
 
@@ -88,6 +103,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
+
         return new RedirectResponse($this->urlGenerator->generate('main'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
@@ -97,3 +113,4 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }
+

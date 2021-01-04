@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Education;
+use Doctrine\ORM\Mapping\Entity;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +22,7 @@ class EducationType extends AbstractType
             ->add('result')
             ->add('dateOfCreate')
             ->add('dateOfUpdate')
-            ->add('user_id')
+            ->add('user',EntityType::class, ['label' => 'uid', 'class' => User::class, 'choice_label' => 'id'])
         ;
     }
 

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EducationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass=EducationRepository::class)
@@ -55,7 +56,7 @@ class Education
     /**
      * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
-    private $user_id;
+    private $user;
 
     public function getId(): ?int
     {
@@ -146,15 +147,14 @@ class Education
         return $this;
     }
 
-    public function getUserId(): ?int
+    public function getUser(): ?User
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(int $user_id): self
+    public function setUser($user): self
     {
-        $this->user_id = $user_id;
-
+        $this->user = $user;
         return $this;
     }
 }

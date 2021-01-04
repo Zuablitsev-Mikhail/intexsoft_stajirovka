@@ -46,7 +46,7 @@ class PersonalData
     /**
      * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
-    private $user_id;
+    private $user;
 
     public function getId(): ?int
     {
@@ -118,9 +118,9 @@ class PersonalData
         return $this->user_id;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUserId(?User $user): self
     {
-        $this->user_id = $user_id;
+        $this->user_id = $user;
 
         return $this;
     }
