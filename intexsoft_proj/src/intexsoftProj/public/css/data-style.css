@@ -2,6 +2,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 1330px;
+    margin: 0 auto;
 }
 table{
     border-collapse: collapse!important;
@@ -75,4 +77,5 @@ label{
 }
 .btn:hover{
     background-color: #065f80;
+    color: white!important;
 }

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/spokenlanguages")
+ * @Route("employee/spokenlanguages")
  */
 class SpokenLanguagesController extends AbstractController
 {
@@ -90,5 +90,14 @@ class SpokenLanguagesController extends AbstractController
         }
 
         return $this->redirectToRoute('spoken_languages_index');
+    }
+    /**
+     * @Route("/user/{uid}", name="spoken_languages_index", methods={"GET"})
+     */
+    public function Uindex(SpokenLanguagesRepository $spokenLanguagesRepository,int $uid): Response
+    {
+        return $this->render('spoken_languages/index.html.twig', [
+            'spoken_languages' => $spokenLanguagesRepository->findBy(array('user'=>"uid"),[]),
+        ]);
     }
 }

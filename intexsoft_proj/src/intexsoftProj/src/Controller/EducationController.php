@@ -79,7 +79,6 @@ class EducationController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="education_delete", methods={"DELETE"})
      */
@@ -92,5 +91,15 @@ class EducationController extends AbstractController
         }
 
         return $this->redirectToRoute('education_index');
+    }
+
+    /**
+     * @Route("/user/{uid}", name="education_index_user", methods={"GET"})
+     */
+    public function Uindex(EducationRepository $educationRepository, int $uid): Response
+    {
+        return $this->render('education/index.html.twig', [
+            'education' => $educationRepository->findBy(array('user'=>$uid),[])
+        ]);
     }
 }

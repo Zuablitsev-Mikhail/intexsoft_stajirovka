@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserMenuController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/Menu.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="stylesheet" href="/css/font-include.css">
+{% endblock %}
+{% block body %}
+    <main>
+        <section class="left">
+            <ul class="list">
+                <li><a href="/employee/education/user/{{ app.user.id }}">Образование</a></li>
+                <li><a href="/employee/spokenlanguages/user/{{ app.user.id }}">Языки</a></li>
+                <li><a href="#">Проекты</a></li>
+                <li><a href="#">Навыки</a></li>
+                <li><a href="/employee/personaldata/user/{{ app.user.id }}">Персональные данные</a></li>
+            </ul>
+        </section>
+        <section class="content">
+            <div class="content-box">
+
+            </div>
+        </section>
+    </main>
+    {% block footer %}
+    {% endblock %}
+{% endblock %}

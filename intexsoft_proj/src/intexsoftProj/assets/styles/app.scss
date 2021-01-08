@@ -1,77 +1,14 @@
+// настройте некоторые переменные Bootstrap
+$brand-primary: darken(#428bca, 20%);
+
+// ~ позволяет вам ссылаться на вещи в node_modules
+@import '../.././node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+h1{
+  font-size: 24pt;
+}
 body{
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  width: 100%;
-}
-.flex{
-  display: flex;
-  flex-wrap: wrap;
-}
-footer{
-  position: absolute;
-  bottom: 0;
-}
-a{
-  text-decoration: none;
-}
-form{
-  display: flex;
-  flex-direction: column;
-  max-width: 900px;
   margin: 0 auto;
-  margin-top: -5%;
-  padding: 1em 1em;
-  //border: 1px solid rgba(0,0,0,0.3);
-  border-radius: 3px;
-  input{
-    width: 100%;
-    border: 1px solid #6E6E6E;
-    border-radius: 2px;
-    height: 30px;
-    margin: 10px 0;
-    font-size: 14pt;
-  }
-  button[type="submit"]{
-    justify-self: center;
-    align-self: center;
-    border-radius: 5px;
-    width: 167px;
-    height: 51px;
-    border: 0;
-    color: white;
-    cursor: pointer;
-    background-color: #01445d;
-    margin-top: 3%;
-    &:hover{
-      background-color: #065f80;
-    }
-  }
-  label{
-    font-size: 1.5em;
-  }
-  #registration_form_agreeTerms{
-    display: inline;
-    width: 30px;
-    margin-left: 30px;
-    height: 20px;
-  }
-}
-h1,h2,h3,h4,h5,h6{
-  text-align: center;
-  font-size: 13pt;
-  &.mb-3{
-    font-size: 2.5rem!important;
-    font-weight: normal;
-  }
-}
-.mb-3{
-  text-align: center;
-  margin: 20px 0;
-  font-size: 13pt;
-  font-weight: bold;
+  max-width: 1330px;
 }

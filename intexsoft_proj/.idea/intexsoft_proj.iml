@@ -30,5 +30,6 @@
     <content url="file://$MODULE_DIR$/src/intexsoftProj/public/build" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -14,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface
 {
     public const ROLE_USER = 0;
-    public const ROLE_SELLER = 1;
+    public const ROLE_ADMIN = 1;
     public const ROLE_HR = 2;
     /**
      * @ORM\Id
@@ -56,6 +58,16 @@ class User implements UserInterface
      */
     private $lastLogin;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Education::class, mappedBy="user")
+     */
+    private $education;
+
+    public function __construct()
+    {
+        $this->education = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,7 +103,7 @@ class User implements UserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         if($this->roles[0] == self::ROLE_USER) $roles[0] = 'ROLE_USER';
-        if($this->roles[0] == self::ROLE_SELLER) $roles[0] = 'ROLE_SELLER';
+        if($this->roles[0] == self::ROLE_ADMIN) $roles[0] = 'ROLE_ADMIN';
         if($this->roles[0] == self::ROLE_HR) $roles[0] = 'ROLE_HR';
         return array_unique($roles);
     }
@@ -165,5 +177,35 @@ class User implements UserInterface
     }
     public function __toString(){
         return $this->id;
+    }
+
+    /**
+     * @return Collection|Education[]
+     */
+    public function getEducation(): Collection
+    {
+        return $this->education;
+    }
+
+    public function addEducation(Education $education): self
+    {
+        if (!$this->education->contains($education)) {
+            $this->education[] = $education;
+            $education->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEducation(Education $education): self
+    {
+        if ($this->education->removeElement($education)) {
+            // set the owning side to null (unless already changed)
+            if ($education->getUser() === $this) {
+                $education->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

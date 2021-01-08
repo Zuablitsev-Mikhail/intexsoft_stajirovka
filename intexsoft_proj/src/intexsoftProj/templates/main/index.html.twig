@@ -10,6 +10,15 @@
                 <p><a href="#">О нас</a></p>
                 <p><a href="#">Контакты</a></p>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if is_granted('ROLE_USER')%}
+                        <p><a href="{{ path('user_menu') }}">Личный кабинет</a></p>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <p><a href="{{ path('admin_menu') }}">Личный кабинет</a></p>
+                    {% endif %}
+                    {% if is_granted('ROLE_HR')%}
+                        <p><a href="{{ path('hr_menu') }}">Личный кабинет</a></p>
+                    {% endif %}
                     <p><a href="{{ path('app_logout') }}">Выход</a></p>
                 {% else %}
                     <p><a href="{{ path('app_login') }}">Вход</a></p>

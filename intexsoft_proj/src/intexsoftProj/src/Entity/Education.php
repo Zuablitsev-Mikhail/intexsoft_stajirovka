@@ -54,9 +54,10 @@ class Education
     private $dateOfUpdate;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="education")
      */
     private $user;
+
 
     public function getId(): ?int
     {
@@ -152,9 +153,11 @@ class Education
         return $this->user;
     }
 
-    public function setUser($user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
         return $this;
     }
+
 }

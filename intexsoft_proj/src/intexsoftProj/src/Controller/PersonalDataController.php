@@ -91,4 +91,13 @@ class PersonalDataController extends AbstractController
 
         return $this->redirectToRoute('personal_data_index');
     }
+    /**
+     * @Route("/user/{uid}", name="personal_data_index", methods={"GET"})
+     */
+    public function Uindex(PersonalDataRepository $personalDataRepository, int $uid): Response
+    {
+        return $this->render('personal_data/index.html.twig', [
+            'personal_datas' => $personalDataRepository->findBy(array('user' => $uid),[])
+        ]);
+    }
 }

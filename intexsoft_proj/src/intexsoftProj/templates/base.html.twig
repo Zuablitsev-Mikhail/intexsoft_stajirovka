@@ -12,10 +12,31 @@
             <link rel="stylesheet" href="/css/font-include.css">
             <link rel="stylesheet" href="/css/footer-style.css">
             <link rel="stylesheet" href="/css/data-style.css">
+            <link rel="stylesheet" href="/css/Menu.css">
         {% endblock %}
+        {% block menuStyles %} {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    {% block header %}
+        <header>
+            <div class="logo"><a href="{{ path('main') }}"><img src="/img/logo_transparent.png" alt=""></a></div>
+            <div class="info-list">
+                {% if is_granted('ROLE_USER')%}
+                    <div class="box box-1"><a href="{{ path('user_menu') }}">{{ app.user.username }}</a></div>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN')%}
+                    <div class="box box-1"><a href="{{ path('admin_menu') }}">{{ app.user.username }}</a></div>
+                {% endif %}
+                {% if is_granted('ROLE_HR')%}
+                    <div class="box box-1"><a href="{{ path('hr_menu') }}">{{ app.user.username }}</a></div>
+                {% endif %}
+                <div class="box box-2"><a href="{{ path('app_logout') }}"><img src="/img/User-Interface-Login-icon.png" alt=""></a></div>
+            </div>
+        </header>
+    {% endblock %}
+        {% block body %}
+
+        {% endblock %}
         {% block footer %}
             <footer class="wrapper flex">
                 <div class="flex footer-nav">
@@ -30,7 +51,8 @@
                 </div>
                 <h5>Ⓒ ООО Imedia</h5>
             </footer>
-        {% endblock %}
+         {% endblock %}
         {% block javascripts %}{% endblock %}
+
     </body>
 </html>

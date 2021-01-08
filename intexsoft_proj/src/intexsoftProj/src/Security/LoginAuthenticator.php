@@ -64,14 +64,13 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
-
-        $pass =  $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']])->getPassword();
-        $pass_check = password_verify($credentials['password'], $pass);
         if (!$user) {
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Email could not be found.');
 
         }
+        $pass =  $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']])->getPassword();
+        $pass_check = password_verify($credentials['password'], $pass);
         if(!$pass_check){
             throw new CustomUserMessageAuthenticationException('Incorrect password.');
         }
@@ -86,14 +85,12 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
         if($credentials){
             $user =  $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
             $user->setIpValue();
-//            $user->setIpValue();
-//            $user->setLastLoginValue();
-//            $entityManager = $user->getDoctrine()->getManager();
-//            $entityManager->persist($user);
-//            $entityManager->flush();
+            $user->setLastLoginValue();
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
             return true;
         }
-        else false;
+        else return false;
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)

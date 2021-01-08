@@ -1,3 +1,12 @@
+.wrapper{
+    margin: 0 auto;
+    max-width: 1360px;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
 footer .border{
     border-top: 1px solid gray;
     -webkit-box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.26);
@@ -10,6 +19,7 @@ footer{
     justify-content: center;
     flex-wrap: wrap;
     padding-top: 2%;
+    margin-top: 5%;
 }
 footer div{
     width: 100%;
