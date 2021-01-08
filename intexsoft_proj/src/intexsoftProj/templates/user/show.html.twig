@@ -19,6 +19,14 @@
                 <th>Password</th>
                 <td>{{ user.password }}</td>
             </tr>
+            <tr>
+                <th>last login</th>
+                <td>{{ user.lastlogin  ? user.lastlogin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ip</th>
+                <td>{{ user.ip }}</td>
+            </tr>
         </tbody>
     </table>
 
