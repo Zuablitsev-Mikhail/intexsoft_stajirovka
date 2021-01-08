@@ -20,9 +20,7 @@ class EducationType extends AbstractType
             ->add('title')
             ->add('disciplines')
             ->add('result')
-            ->add('dateOfCreate')
-            ->add('dateOfUpdate')
-            ->add('user',EntityType::class, ['label' => 'uid', 'class' => User::class, 'choice_label' => 'id'])
+            ->add('user',EntityType::class, ['label' => 'uid', 'class' => User::class, 'choice_label' => 'email'])
         ;
     }
 

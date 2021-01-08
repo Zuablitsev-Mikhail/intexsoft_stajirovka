@@ -92,7 +92,7 @@ class SpokenLanguagesController extends AbstractController
         return $this->redirectToRoute('spoken_languages_index');
     }
     /**
-     * @Route("/user/{uid}", name="spoken_languages_index", methods={"GET"})
+     * @Route("/user/{uid}", name="Uspoken_languages_index", methods={"GET"})
      */
     public function Uindex(SpokenLanguagesRepository $spokenLanguagesRepository,int $uid): Response
     {

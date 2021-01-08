@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\PersonalData;
+use App\Entity\User;
 use App\Form\PersonalDataType;
 use App\Repository\PersonalDataRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,9 +34,12 @@ class PersonalDataController extends AbstractController
         $personalDatum = new PersonalData();
         $form = $this->createForm(PersonalDataType::class, $personalDatum);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $users = $this->getUser()->getUsername();
             $entityManager = $this->getDoctrine()->getManager();
+            $user = new User();
+            $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $users]);
+            $personalDatum->setUserId($user);
             $entityManager->persist($personalDatum);
             $entityManager->flush();
 
@@ -92,7 +96,7 @@ class PersonalDataController extends AbstractController
         return $this->redirectToRoute('personal_data_index');
     }
     /**
-     * @Route("/user/{uid}", name="personal_data_index", methods={"GET"})
+     * @Route("/user/{uid}", name="Upersonal_data_index", methods={"GET"})
      */
     public function Uindex(PersonalDataRepository $personalDataRepository, int $uid): Response
     {

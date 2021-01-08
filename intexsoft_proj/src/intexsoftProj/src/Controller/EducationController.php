@@ -94,7 +94,7 @@ class EducationController extends AbstractController
     }
 
     /**
-     * @Route("/user/{uid}", name="education_index_user", methods={"GET"})
+     * @Route("/user/{uid}", name="Ueducation_index_user", methods={"GET"})
      */
     public function Uindex(EducationRepository $educationRepository, int $uid): Response
     {

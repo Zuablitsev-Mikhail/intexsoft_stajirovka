@@ -115,21 +115,21 @@ class PersonalData
 
     public function getUserId(): ?user
     {
-        return $this->user_id;
+        return $this->user;
     }
 
     public function setUserId(?User $user): self
     {
-        $this->user_id = $user;
+        $this->user = $user;
 
         return $this;
     }
     public function getUserEmail(): ?string
     {
-        return $this->user_id->getEmail();
+        return $this->user->getEmail();
     }
     public function getUserRoles(): ?string
     {
-        return $this->user_id->getRoles()[0];
+        return $this->user->getRoles()[0];
     }
 }

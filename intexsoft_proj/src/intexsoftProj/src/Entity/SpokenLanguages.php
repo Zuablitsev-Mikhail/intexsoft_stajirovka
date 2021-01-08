@@ -25,12 +25,12 @@ class SpokenLanguages
     /**
      * @ORM\OneToOne(targetEntity=Languages::class)
      */
-    private $language_id;
+    private $language;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $level_id;
+    private $level;
 
     /**
      * @ORM\Column(type="date")
@@ -49,36 +49,36 @@ class SpokenLanguages
 
     public function getUserId(): ?int
     {
-        return $this->user_id;
+        return $this->user;
     }
 
     public function setUserId(int $user): self
     {
-        $this->user_id = $user;
+        $this->user = $user;
 
         return $this;
     }
 
     public function getLanguageId(): ?int
     {
-        return $this->language_id;
+        return $this->language;
     }
 
     public function setLanguageId(int $language_id): self
     {
-        $this->language_id = $language_id;
+        $this->language = $language_id;
 
         return $this;
     }
 
     public function getLevelId(): ?int
     {
-        return $this->level_id;
+        return $this->level;
     }
 
     public function setLevelId(int $level_id): self
     {
-        $this->level_id = $level_id;
+        $this->level = $level_id;
 
         return $this;
     }

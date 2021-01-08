@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/project")
+ * @Route("employee/project")
  */
 class ProjectController extends AbstractController
 {
@@ -90,5 +90,15 @@ class ProjectController extends AbstractController
         }
 
         return $this->redirectToRoute('project_index');
+    }
+
+    /**
+     * @Route("/user/{uid}", name="Uproject_index", methods={"GET"})
+     */
+    public function Uindex(ProjectRepository $projectRepository, int $uid): Response
+    {
+        return $this->render('project/index.html.twig', [
+            'projects' => $projectRepository->findBy(array('user' => $uid),[])
+        ]);
     }
 }

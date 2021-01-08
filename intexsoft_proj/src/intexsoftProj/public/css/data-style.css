@@ -56,12 +56,12 @@ form textarea{
     height: 60px;
 }
 select{
-    width: 80px;
     margin: 10px;
     height: 25px;
 }
 label{
     margin-top: 10px;
+    display: block;
 }
 
 .btn{

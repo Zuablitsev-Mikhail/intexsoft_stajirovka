@@ -97,12 +97,12 @@ class CareerSummary
 
     public function getUserId(): ?int
     {
-        return $this->user_id;
+        return $this->user;
     }
 
     public function setUserId(int $user): self
     {
-        $this->user_id = $user;
+        $this->user = $user;
 
         return $this;
     }
