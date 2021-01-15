@@ -17,7 +17,7 @@
         {% for project_role in project_roles %}
             <tr>
                 <td>{{ project_role.id }}</td>
-                <td>{{ project_role.еtitle }}</td>
+                <td>{{ project_role.title }}</td>
                 <td>
                     <a href="{{ path('project_roles_show', {'id': project_role.id}) }}">show</a>
                     <a href="{{ path('project_roles_edit', {'id': project_role.id}) }}">edit</a>

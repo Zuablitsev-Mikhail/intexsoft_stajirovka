@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SpokenLanguages index{% endblock %}
+
+{% block header %} {% endblock %}
+{% block body %}
+    <style>
+        body{
+            justify-content: flex-start;
+        }
+    </style>
+    <h1>Сколько сотрудников владеет языками, по уровням</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Колличество</th>
+                <th>Уровень</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for spoken_language in spoken_languages %}
+            <tr>
+                <td>{{ spoken_language.count }}</td>
+                <td>{{ spoken_language.level }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% block footer %} {% endblock %}
+{% endblock %}

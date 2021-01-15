@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Project;
+use App\Entity\User;
 use App\Form\ProjectType;
+use App\Form\AddUserType;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +23,7 @@ class ProjectController extends AbstractController
     public function index(ProjectRepository $projectRepository): Response
     {
         return $this->render('project/index.html.twig', [
-            'projects' => $projectRepository->findAll(),
+            'projects' => $projectRepository->findBy([],['period_start' => 'DESC']),
         ]);
     }
 
@@ -99,6 +101,37 @@ class ProjectController extends AbstractController
     {
         return $this->render('project/index.html.twig', [
             'projects' => $projectRepository->findBy(array('user' => $uid),[])
+        ]);
+    }
+
+    /**
+     * @Route("/{projId}/add/user", name="AddUserToProject", methods={"GET","POST"})
+     */
+    public function AddUsers(Request $request, int $projId): Response
+    {
+//        $em = $this->getDoctrine()->getManager();
+//        $user = $this->getDoctrine()->getRepository(User::class)->find(6);
+//        dump($user);
+//        $proj = $this->getDoctrine()->getRepository(Project::class)->find(1);
+//        $user->addProject($proj);
+//        $em->persist($user);
+//        $em->flush();
+//        return $this->render('addUser/index.html.twig', [
+//            'projects' => $projectRepository->findOneBy(array('id' => 1),[])
+//        ]);
+        $project = $this->getDoctrine()->getRepository(Project::class)->find($projId);
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('project_index');
+        }
+
+        return $this->render('addUser/addUser.html.twig', [
+            'project' => $project,
+            'form' => $form->createView(),
         ]);
     }
 }

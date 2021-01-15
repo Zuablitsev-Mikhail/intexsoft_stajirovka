@@ -13,11 +13,13 @@
             </tr>
             <tr>
                 <th>User_id</th>
-                <td>{{ spoken_language.userId }}</td>
+                {%  dump(spoken_language.user) %}
+                <td>{{ spoken_language.user.email }}</td>
+
             </tr>
             <tr>
                 <th>Language_id</th>
-                <td>{{ spoken_language.languageId }}</td>
+                <td>{{ spoken_language.language.id }}</td>
             </tr>
             <tr>
                 <th>Level</th>

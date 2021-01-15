@@ -24,8 +24,6 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @ORM\OneToOne(targetEntity="src\Entity\PersonalData")
-     * @ORM\OneToOne(targetEntity="src\Entity\Project")
-     * @ORM\OneToOne(targetEntity="src\Entity\Education")
      * @ORM\OneToMany(targetEntity=SpokenLanguages::class, mappedBy="user_id")
      * @ORM\OneToMany(targetEntity=CareerSummary::class, mappedBy="user_id")
      * @ORM\OneToMany(targetEntity=TechnicalExperience::class, mappedBy="user_id")
@@ -64,9 +62,15 @@ class User implements UserInterface
      */
     private $education;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="user")
+     */
+    private $projects;
+
     public function __construct()
     {
         $this->education = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -176,9 +180,6 @@ class User implements UserInterface
         $this->lastLogin = $lastLogin;
         return $this;
     }
-    public function __toString(){
-        return $this->id;
-    }
 
     /**
      * @return Collection|Education[]
@@ -205,6 +206,33 @@ class User implements UserInterface
             if ($education->getUser() === $this) {
                 $education->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeUser($this);
         }
 
         return $this;

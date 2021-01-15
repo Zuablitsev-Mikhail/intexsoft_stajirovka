@@ -19,10 +19,6 @@ class Project
      */
     private $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
-     */
-    private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -59,26 +55,21 @@ class Project
      */
     private $role_id;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="projects")
+     */
+    private $user;
+
+
     public function __construct()
     {
         $this->technologies = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(int $user): self
-    {
-        $this->user_id = $user;
-
-        return $this;
     }
 
     public function getInternalTitle(): ?string
@@ -173,6 +164,30 @@ class Project
     public function setRoleId(?ProjectRoles $role_id): self
     {
         $this->role_id = $role_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->user->removeElement($user);
 
         return $this;
     }

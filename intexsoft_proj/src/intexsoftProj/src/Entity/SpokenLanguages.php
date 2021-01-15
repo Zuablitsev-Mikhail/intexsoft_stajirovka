@@ -10,6 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class SpokenLanguages
 {
+
+    public const LVL_advanced = 4;
+    public const LVL_upperIntermediate = 3;
+    public const LVL_intermediate = 2;
+    public const LVL_elementary = 1;
+    public const LVL_beginner = 0;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -18,14 +24,10 @@ class SpokenLanguages
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="id")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="SpokenLanguages")
      */
     private $user;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Languages::class)
-     */
-    private $language;
 
     /**
      * @ORM\Column(type="integer")
@@ -38,35 +40,28 @@ class SpokenLanguages
     private $dateOfCreate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateOfUpdate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Languages::class, inversedBy="spokenLanguages")
+     */
+    private $language;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?int
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUserId(int $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getLanguageId(): ?int
-    {
-        return $this->language;
-    }
-
-    public function setLanguageId(int $language_id): self
-    {
-        $this->language = $language_id;
 
         return $this;
     }
@@ -103,6 +98,18 @@ class SpokenLanguages
     public function setDateOfUpdate(\DateTimeInterface $dateOfUpdate): self
     {
         $this->dateOfUpdate = $dateOfUpdate;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?Languages
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(?Languages $language): self
+    {
+        $this->language = $language;
 
         return $this;
     }

@@ -12,8 +12,6 @@
                 <th>User_id</th>
                 <th>Language_id</th>
                 <th>Level</th>
-                <th>DateOfCreate</th>
-                <th>DateOfUpdate</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,11 +19,9 @@
         {% for spoken_language in spoken_languages %}
             <tr>
                 <td>{{ spoken_language.id }}</td>
-                <td>{{ spoken_language.userId }}</td>
-                <td>{{ spoken_language.languageId }}</td>
+                <td>{{ spoken_language.user.email }}</td>
+                <td>{{ spoken_language.language.title }}</td>
                 <td>{{ spoken_language.levelId }}</td>
-                <td>{{ spoken_language.dateOfCreate ? spoken_language.dateOfCreate|date('Y-m-d') : '' }}</td>
-                <td>{{ spoken_language.dateOfUpdate ? spoken_language.dateOfUpdate|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('spoken_languages_show', {'id': spoken_language.id}) }}">show</a>
                     <a href="{{ path('spoken_languages_edit', {'id': spoken_language.id}) }}">edit</a>

@@ -9,26 +9,27 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>User_id</th>
+{#                <th>User_id</th>#}
                 <th>Internal_title</th>
                 <th>External_title</th>
                 <th>Period_start</th>
                 <th>Period_end</th>
-                <th>Role_id</th>
+{#                <th>Role_id</th>#}
                 <th>Description</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
+        {% dump(projects) %}
         {% for project in projects %}
             <tr>
                 <td>{{ project.id }}</td>
-                <td>{{ project.userId }}</td>
+{#                <td>{{ project.userId }}</td>#}
                 <td>{{ project.internalTitle }}</td>
                 <td>{{ project.externalTitle }}</td>
                 <td>{{ project.periodStart ? project.periodStart|date('Y-m-d') : '' }}</td>
                 <td>{{ project.periodEnd ? project.periodEnd|date('Y-m-d') : '' }}</td>
-                <td>{{ project.roleId }}</td>
+{#                <td>{{ project.roleId }}</td>#}
                 <td>{{ project.description }}</td>
                 <td>
                     <a href="{{ path('project_show', {'id': project.id}) }}">show</a>

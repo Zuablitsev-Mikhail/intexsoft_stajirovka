@@ -36,6 +36,7 @@ class SpokenLanguagesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $spokenLanguage->setDateOfCreate(new \DateTime());
             $entityManager->persist($spokenLanguage);
             $entityManager->flush();
 
@@ -97,7 +98,16 @@ class SpokenLanguagesController extends AbstractController
     public function Uindex(SpokenLanguagesRepository $spokenLanguagesRepository,int $uid): Response
     {
         return $this->render('spoken_languages/index.html.twig', [
-            'spoken_languages' => $spokenLanguagesRepository->findBy(array('user'=>"uid"),[]),
+            'spoken_languages' => $spokenLanguagesRepository->findBy(array('user'=> $uid),[]),
+        ]);
+    }
+    /**
+     * @Route("/stat/{uid}", name="statspokenLanguages", methods={"GET"})
+     */
+    public function statindex(SpokenLanguagesRepository $spokenLanguagesRepository): Response
+    {
+        return $this->render('spoken_languages/statindex.html.twig', [
+            'spoken_languages' => $spokenLanguagesRepository->findStat(),
         ]);
     }
 }

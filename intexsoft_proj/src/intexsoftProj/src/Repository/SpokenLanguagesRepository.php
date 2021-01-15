@@ -18,7 +18,17 @@ class SpokenLanguagesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, SpokenLanguages::class);
     }
-
+    public function findStat()
+    {
+        return $this->createQueryBuilder('o')
+            ->select('Count(user.email) as count, o.level')
+            ->Join('o.user','user')
+            ->groupBy('o.level')
+            ->orderBy('count', 'DESC' )
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return SpokenLanguages[] Returns an array of SpokenLanguages objects
     //  */

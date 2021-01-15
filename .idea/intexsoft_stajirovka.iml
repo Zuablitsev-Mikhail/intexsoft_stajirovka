@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/webpack-encore-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/polyfill-php73" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/asset" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/dependency-injection" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/config" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/intexsoft_proj/vendor/psr/log" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -19,7 +19,7 @@ class TechnicalExperienceType extends AbstractType
             ->add('experienceTerm')
             ->add('level')
             ->add('lastYearUsed')
-            ->add('user',EntityType::class, ['label' => 'uid', 'class' => User::class, 'choice_label' => 'id'])
+            ->add('user',EntityType::class, ['label' => 'uid', 'class' => User::class, 'choice_label' => 'email'])
         ;
     }
 

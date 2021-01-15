@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LanguagesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,6 +25,16 @@ class Languages
      */
     private $title;
 
+    /**
+     * @ORM\OneToMany(targetEntity=SpokenLanguages::class, mappedBy="language")
+     */
+    private $spokenLanguages;
+
+    public function __construct()
+    {
+        $this->spokenLanguages = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,6 +48,36 @@ class Languages
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SpokenLanguages[]
+     */
+    public function getSpokenLanguages(): Collection
+    {
+        return $this->spokenLanguages;
+    }
+
+    public function addSpokenLanguage(SpokenLanguages $spokenLanguage): self
+    {
+        if (!$this->spokenLanguages->contains($spokenLanguage)) {
+            $this->spokenLanguages[] = $spokenLanguage;
+            $spokenLanguage->setLanguage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpokenLanguage(SpokenLanguages $spokenLanguage): self
+    {
+        if ($this->spokenLanguages->removeElement($spokenLanguage)) {
+            // set the owning side to null (unless already changed)
+            if ($spokenLanguage->getLanguage() === $this) {
+                $spokenLanguage->setLanguage(null);
+            }
+        }
 
         return $this;
     }

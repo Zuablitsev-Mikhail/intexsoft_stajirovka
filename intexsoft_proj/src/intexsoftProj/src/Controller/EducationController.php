@@ -99,7 +99,7 @@ class EducationController extends AbstractController
     public function Uindex(EducationRepository $educationRepository, int $uid): Response
     {
         return $this->render('education/index.html.twig', [
-            'education' => $educationRepository->findBy(array('user'=>$uid),[])
+            'education' => $educationRepository->findBy(array('user'=> $uid),[])
         ]);
     }
 }
