@@ -43,7 +43,7 @@ class PersonalDataController extends AbstractController
             $entityManager->persist($personalDatum);
             $entityManager->flush();
 
-            return $this->redirectToRoute('personal_data_index');
+            return $this->redirectToRoute('user_menu');
         }
 
         return $this->render('personal_data/new.html.twig', [

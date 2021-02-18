@@ -16,7 +16,26 @@
             </tr>
         </thead>
         <tbody>
-        {% for spoken_language in spoken_languages %}
+        {% if not is_granted('ROLE_USER')%}
+            {% for spoken_language in spoken_languages %}
+                <tr>
+                    <td>{{ spoken_language.id }}</td>
+                    <td>{{ spoken_language.user.email }}</td>
+                    <td>{{ spoken_language.language.title }}</td>
+                    <td>{{ spoken_language.levelId }}</td>
+                    <td>
+                        <a href="{{ path('spoken_languages_show', {'id': spoken_language.id}) }}">show</a>
+                        <a href="{{ path('spoken_languages_edit', {'id': spoken_language.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            {% for spoken_language in spoken_languages %}
+                {% if spoken_language.user.id == app.user.id %}
             <tr>
                 <td>{{ spoken_language.id }}</td>
                 <td>{{ spoken_language.user.email }}</td>
@@ -27,11 +46,9 @@
                     <a href="{{ path('spoken_languages_edit', {'id': spoken_language.id}) }}">edit</a>
                 </td>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 

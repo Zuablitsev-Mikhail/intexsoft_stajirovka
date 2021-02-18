@@ -38,6 +38,14 @@ class EducationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $date = new \DateTime();
             $education->setDateOfCreate($date);
+            $education->setDateOfUpdate($date);
+
+            $users = $this->getUser()->getUsername();
+            $entityManager = $this->getDoctrine()->getManager();
+            $user = new User();
+            $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $users]);
+
+            $education->setUser($user);
             $entityManager->persist($education);
             $entityManager->flush();
 

@@ -19,6 +19,7 @@
             </tr>
         </thead>
         <tbody>
+        {% if not is_granted('ROLE_USER')%}
         {% for education in education %}
             <tr>
                 <td>{{ education.id }}</td>
@@ -38,6 +39,25 @@
                 <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
+        {% else %}
+            {% for education in education %}
+                {% if education.user.id == app.user.id %}
+                <tr>
+                    <td>{{ education.id }}</td>
+                    <td>{{ education.dateStart ? education.dateStart|date('Y-m-d') : '' }}</td>
+                    <td>{{ education.dateEnd ? education.dateEnd|date('Y-m-d') : '' }}</td>
+                    <td>{{ education.title }}</td>
+                    <td>{{ education.disciplines }}</td>
+                    <td>{{ education.result }}</td>
+                    <td><a href="{{ path('user_show', {'id': education.user.id})}}">{{ education.user.email }}</a></td>
+                    <td>
+                        <a href="{{ path('education_show', {'id': education.id}) }}">show</a>
+                        <a href="{{ path('education_edit', {'id': education.id}) }}">edit</a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 

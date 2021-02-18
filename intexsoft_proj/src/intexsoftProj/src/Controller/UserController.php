@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\PersonalData;
 use App\Entity\Project;
 use App\Entity\User;
 use App\Form\UserType;
@@ -41,7 +42,13 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $encoded = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encoded);
+            $user->setRoles([0]);
             $entityManager->persist($user);
+            $entityManager->flush();
+
+            $personalData = new PersonalData();
+            $personalData->setUserId($user);
+            $entityManager->persist($personalData);
             $entityManager->flush();
 
             return $this->redirectToRoute('user_index');
